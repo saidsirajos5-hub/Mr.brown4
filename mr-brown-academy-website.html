@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mr. Brown Academy – أكاديمية تعليم اللغة الإنجليزية لغير الناطقين بها. دروس أونلاين وحضوري، مدرّسون محترفون، مستويات متعددة.">
+<title>Mr. Brown Academy – تعلّم الإنجليزية بثقة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════
+   DESIGN SYSTEM
+════════════════════════════════════ */
+:root {
+  --gold:        #C8A96E;
+  --gold-light:  #E2CC9E;
+  --gold-dim:    rgba(200,169,110,.15);
+  --navy:        #0B1C2E;
+  --navy-mid:    #102235;
+  --navy-light:  #163045;
+  --cream:       #F4EFE6;
+  --cream-dim:   rgba(244,239,230,.7);
+  --white:       #FFFFFF;
+  --text-muted:  #8BA0B5;
+  --border:      rgba(200,169,110,.18);
+  --shadow:      0 24px 64px rgba(0,0,0,.45);
+  --radius:      6px;
+  --transition:  .4s cubic-bezier(.25,.8,.25,1);
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Tajawal', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── SELECTION ── */
+::selection { background: var(--gold); color: var(--navy); }
+
+/* ── UTILITIES ── */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.gold { color: var(--gold); }
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.divider {
+  width: 50px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 0 auto 48px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  padding: 15px 36px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  letter-spacing: .5px;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(200,169,110,.35); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 34px;
+  border-radius: var(--radius);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-outline:hover { background: var(--gold-dim); transform: translateY(-3px); }
+
+/* noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: .5;
+}
+
+/* ════════════════════════════════════
+   NAVBAR
+════════════════════════════════════ */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 24px;
+  transition: var(--transition);
+}
+#navbar.scrolled {
+  background: rgba(11,28,46,.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+}
+.nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 42px; height: 42px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--navy);
+}
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.logo-text span { display: block; font-size: 11px; letter-spacing: 2px; color: var(--gold); font-family: 'Tajawal', sans-serif; font-weight: 400; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--cream-dim);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-cta { margin-right: 12px; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--navy);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color .3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute;
+  top: 24px; left: 24px;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--cream);
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+/* ════════════════════════════════════
+   HERO
+════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 50%, rgba(200,169,110,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(22,48,69,.6) 0%, transparent 60%),
+    linear-gradient(160deg, #0B1C2E 0%, #0e2236 50%, #091826 100%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,169,110,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-orb {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,169,110,.07) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: translate(-50%,-50%) scale(1); opacity: .7; }
+  50% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeUp .8s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 32px;
+  animation: fadeUp .8s .1s ease both;
+}
+.badge-dot {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 24px;
+  animation: fadeUp .8s .2s ease both;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+.hero-desc {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 48px;
+  line-height: 1.8;
+  animation: fadeUp .8s .3s ease both;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .4s ease both;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 80px;
+  flex-wrap: wrap;
+  animation: fadeUp .8s .5s ease both;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  animation: fadeUp 1s .8s ease both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ════════════════════════════════════
+   FEATURES STRIP
+════════════════════════════════════ */
+#strip {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+.strip-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.strip-item svg { color: var(--gold); flex-shrink: 0; }
+
+/* ════════════════════════════════════
+   ABOUT
+════════════════════════════════════ */
+#about {
+  padding: 110px 0;
+  position: relative;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-card-main {
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.about-card-main::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.about-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 96px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  opacity: .15;
+  position: absolute;
+  top: 20px;
+  left: 24px;
+}
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+.about-quote::before {
+  content: '"';
+  display: block;
+  font-size: 60px;
+  color: var(--gold);
+  line-height: .7;
+  margin-bottom: 8px;
+}
+.about-badge-float {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 10px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(200,169,110,.3);
+}
+.badge-big { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 700; line-height: 1; }
+.badge-sm  { font-size: 12px; font-weight: 700; }
+.about-text { }
+.about-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; }
+.about-checks { list-style: none; margin: 28px 0; }
+.about-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--cream-dim);
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+.check-icon {
+  width: 22px; height: 22px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+/* ════════════════════════════════════
+   COURSES
+════════════════════════════════════ */
+#courses {
+  padding: 110px 0;
+  background: var(--navy-mid);
+  position: relative;
+}
+#courses::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(200,169,110,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,169,110,.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.courses-header { text-align: center; margin-bottom: 64px; position: relative; }
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  position: relative;
+}
+.course-card {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.course-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 64px rgba(0,0,0,.4);
+}
+.course-card.featured {
+  border-color: var(--gold);
+  position: relative;
+}
+.featured-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+.course-icon-wrap {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  position: relative;
+  overflow: hidden;
+}
+.course-icon-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: .15;
+}
+.level-beginner  .course-icon-wrap { background: linear-gradient(135deg,#1a3a2e,#0d2418); }
+.level-elementary.course-icon-wrap { background: linear-gradient(135deg,#2a1a3a,#180d24); }
+.level-intermediate .course-icon-wrap { background: linear-gradient(135deg,#3a2a1a,#241a0d); }
+.level-upper .course-icon-wrap { background: linear-gradient(135deg,#1a2a3a,#0d1824); }
+.level-advanced .course-icon-wrap { background: linear-gradient(135deg,#2a1a1a,#240d0d); }
+.level-business .course-icon-wrap { background: linear-gradient(135deg,#1a1a2a,#0d0d24); }
+
+.course-body { padding: 28px; }
+.course-level {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.course-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.course-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+.course-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.course-meta span { display: flex; align-items: center; gap: 5px; }
+
+/* ════════════════════════════════════
+   HOW IT WORKS
+════════════════════════════════════ */
+#how {
+  padding: 110px 0;
+}
+.how-header { text-align: center; margin-bottom: 80px; }
+.steps-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+.steps-wrap::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+}
+.step-card { text-align: center; position: relative; }
+.step-num {
+  width: 88px; height: 88px;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  position: relative;
+  z-index: 1;
+  transition: var(--transition);
+}
+.step-card:hover .step-num {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  transform: scale(1.1);
+}
+.step-title { font-size: 17px; font-weight: 700; color: var(--cream); margin-bottom: 10px; }
+.step-desc  { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* ════════════════════════════════════
+   PRICING
+════════════════════════════════════ */
+#pricing {
+  padding: 110px 0;
+  background: var(--navy-mid);
+}
+.pricing-header { text-align: center; margin-bottom: 64px; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 28px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.price-card {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 36px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.price-card.popular {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, #12283d, #0b1c2e);
+}
+.price-card.popular::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.popular-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.price-plan { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.price-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin: 20px 0 4px;
+}
+.price-amount sup { font-size: 22px; vertical-align: super; }
+.price-period { font-size: 13px; color: var(--text-muted); margin-bottom: 32px; }
+.price-features { list-style: none; margin-bottom: 36px; }
+.price-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--cream-dim);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(200,169,110,.07);
+}
+.price-features li:last-child { border-bottom: none; }
+.feat-check { color: var(--gold); font-size: 13px; flex-shrink: 0; }
+.feat-cross { color: #445; font-size: 13px; flex-shrink: 0; }
+
+/* ════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════ */
+#testimonials {
+  padding: 110px 0;
+}
+.testi-header { text-align: center; margin-bottom: 64px; }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+.testi-card {
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+  transition: var(--transition);
+}
+.testi-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+.testi-text {
+  font-size: 15px;
+  color: var(--cream-dim);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.author-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.author-name { font-weight: 700; font-size: 15px; color: var(--cream); }
+.author-role { font-size: 12px; color: var(--text-muted); }
+
+/* ════════════════════════════════════
+   FAQ
+════════════════════════════════════ */
+#faq {
+  padding: 110px 0;
+  background: var(--navy-mid);
+}
+.faq-header { text-align: center; margin-bottom: 64px; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.faq-item.open { border-color: var(--gold); }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--cream);
+  background: var(--navy);
+  gap: 20px;
+  user-select: none;
+}
+.faq-icon {
+  width: 28px; height: 28px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+  background: var(--navy);
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding: 0 28px;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 28px 22px; }
+
+/* ════════════════════════════════════
+   CONTACT / REGISTER
+════════════════════════════════════ */
+#contact {
+  padding: 110px 0;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info h2 { margin-bottom: 20px; }
+.contact-info p { color: var(--text-muted); font-size: 16px; margin-bottom: 36px; line-height: 1.8; }
+.contact-items { list-style: none; }
+.contact-items li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  color: var(--cream-dim);
+  font-size: 15px;
+}
+.contact-icon {
+  width: 44px; height: 44px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.form-card {
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 44px 40px;
+  position: relative;
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 12px 12px 0 0;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: .5px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  color: var(--cream);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+  transition: border-color .3s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group select option { background: var(--navy); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 32px;
+}
+.form-success .success-icon { font-size: 52px; margin-bottom: 16px; }
+.form-success h3 { font-size: 22px; color: var(--gold); margin-bottom: 8px; }
+.form-success p { color: var(--text-muted); font-size: 15px; }
+
+/* ════════════════════════════════════
+   CTA BANNER
+════════════════════════════════════ */
+#cta-banner {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0f2233 0%, #1a3348 50%, #0f2233 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 50%, rgba(200,169,110,.08) 0%, transparent 70%);
+}
+.cta-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 68px);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  position: relative;
+}
+.cta-big span { color: var(--gold); }
+.cta-sub { font-size: 17px; color: var(--text-muted); margin-bottom: 44px; position: relative; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+footer {
+  background: #07111a;
+  border-top: 1px solid var(--border);
+  padding: 70px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+.footer-brand {}
+.footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-desc { font-size: 14px; color: var(--text-muted); line-height: 1.8; max-width: 260px; margin-bottom: 24px; }
+.social-links { display: flex; gap: 12px; }
+.social-btn {
+  width: 38px; height: 38px;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  transition: var(--transition);
+}
+.social-btn:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .3s;
+}
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ════════════════════════════════════
+   WHATSAPP BUTTON
+════════════════════════════════════ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 998;
+  background: #25D366;
+  color: white;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 28px rgba(37,211,102,.4);
+  text-decoration: none;
+  transition: var(--transition);
+  animation: floatIn 1s 1s ease both;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,.5); }
+@keyframes floatIn { from{opacity:0;transform:scale(0)} to{opacity:1;transform:scale(1)} }
+
+/* ════════════════════════════════════
+   BACK TO TOP
+════════════════════════════════════ */
+#back-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 998;
+  width: 46px; height: 46px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0;
+  pointer-events: none;
+  font-size: 18px;
+}
+#back-top.visible { opacity: 1; pointer-events: all; }
+#back-top:hover { background: var(--gold); color: var(--navy); }
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+@media (max-width: 900px) {
+  .about-grid    { grid-template-columns: 1fr; gap: 50px; }
+  .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
+  .footer-grid   { grid-template-columns: 1fr 1fr; }
+  .steps-wrap    { grid-template-columns: 1fr 1fr; }
+  .steps-wrap::before { display: none; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .about-badge-float { position: static; margin-top: 24px; display: inline-block; }
+}
+@media (max-width: 600px) {
+  .footer-grid   { grid-template-columns: 1fr; }
+  .steps-wrap    { grid-template-columns: 1fr; }
+  .hero-stats    { gap: 32px; }
+  .form-card     { padding: 28px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">B</div>
+      <div class="logo-text">
+        Mr. Brown Academy
+        <span>English Language School</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#courses">الدورات</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+      <li><a href="#booking">احجز موعد</a></li>
+      <li><a href="#blog">المدوّنة</a></li>
+      <li><a href="#faq">الأسئلة الشائعة</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary nav-cta">سجّل مجاناً</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about"        onclick="toggleMenu()">من نحن</a>
+  <a href="#courses"      onclick="toggleMenu()">الدورات</a>
+  <a href="#pricing"      onclick="toggleMenu()">الأسعار</a>
+  <a href="#booking"      onclick="toggleMenu()">احجز موعد</a>
+  <a href="#blog"         onclick="toggleMenu()">المدوّنة</a>
+  <a href="#faq"          onclick="toggleMenu()">الأسئلة الشائعة</a>
+  <a href="#contact"      onclick="toggleMenu()">تواصل معنا</a>
+  <a href="#contact" class="btn-primary" onclick="toggleMenu()">سجّل مجاناً</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        التسجيل مفتوح الآن — أماكن محدودة
+      </div>
+      <h1 class="hero-title">
+        تحدّث الإنجليزية
+        <em>بثقة وفصاحة</em>
+      </h1>
+      <p class="hero-desc">
+        أكاديمية Mr. Brown — المكان الذي تتحوّل فيه من متعلّم إلى متحدّث حقيقي.
+        دروس مُصمَّمة خصيصًا لغير الناطقين بالإنجليزية، أونلاين وحضوري.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">🎓 ابدأ مجاناً</a>
+        <a href="#courses" class="btn-outline">استعرض الدورات</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num" data-target="500">0</div>
+          <div class="stat-label">طالب متخرّج</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="6">0</div>
+          <div class="stat-label">مستويات تعليمية</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="98">0</div>
+          <div class="stat-label">نسبة الرضا %</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="5">0</div>
+          <div class="stat-label">سنوات خبرة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    تمرير
+  </div>
+</section>
+
+<!-- ══ STRIP ══ -->
+<div id="strip">
+  <div class="strip-inner">
+    <div class="strip-item">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      حصة تجريبية مجانية
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      جداول مرنة تناسبك
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      مدرّسون معتمدون
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      أونلاين وحضوري
+    </div>
+    <div class="strip-item">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      تقييم 4.9 / 5 من الطلاب
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card-main">
+          <div class="about-letter">B</div>
+          <blockquote class="about-quote">
+            اللغة ليست مجرد كلمات — هي مفتاح الفرص والثقة والمستقبل.
+          </blockquote>
+        </div>
+        <div class="about-badge-float">
+          <div class="badge-big">+5</div>
+          <div class="badge-sm">سنوات خبرة</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-tag">من نحن</span>
+        <h2 class="section-heading">أكاديمية بُنيت على فهم تحدياتك</h2>
+        <p>في Mr. Brown Academy لا نُدرّس اللغة الإنجليزية فحسب — بل نُدرّسك كيف تفكر وتشعر وتعبّر بها. منذ أول يوم، ستلاحظ الفرق.</p>
+        <p>مناهجنا مُصمَّمة بدقة لتناسب المتعلّم العربي، مع فهم عميق للعقبات اللغوية التي تواجهك.</p>
+        <ul class="about-checks">
+          <li><div class="check-icon">✓</div> منهج يُركّز على المحادثة الفعلية من اليوم الأول</li>
+          <li><div class="check-icon">✓</div> بيئة تعليمية آمنة تشجّعك على الخطأ والتعلّم منه</li>
+          <li><div class="check-icon">✓</div> متابعة فردية لكل طالب وتغذية راجعة مستمرة</li>
+          <li><div class="check-icon">✓</div> شهادات معتمدة في نهاية كل مستوى</li>
+        </ul>
+        <a href="#contact" class="btn-primary">احجز حصتك التجريبية</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COURSES ══ -->
+<section id="courses">
+  <div class="container">
+    <div class="courses-header reveal">
+      <span class="section-tag">الدورات</span>
+      <h2 class="section-heading">مستوى لكل شخص</h2>
+      <p class="section-sub">سواء كنت تبدأ من الصفر أو تريد صقل مهاراتك — لدينا الدورة المناسبة لك تمامًا.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card level-beginner reveal">
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#1a3a2e,#0d2418)">🌱</div>
+        <div class="course-body">
+          <div class="course-level">المستوى الأول</div>
+          <h3 class="course-name">Beginner – المبتدئ</h3>
+          <p class="course-desc">ابدأ رحلتك من الصفر. الحروف، الكلمات الأساسية، والجمل اليومية البسيطة.</p>
+          <div class="course-meta">
+            <span>⏱ 8 أسابيع</span>
+            <span>👥 حضوري/أونلاين</span>
+            <span>📚 16 حصة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card level-elementary reveal">
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#2a1a3a,#180d24)">🌿</div>
+        <div class="course-body">
+          <div class="course-level">المستوى الثاني</div>
+          <h3 class="course-name">Elementary – الأساسي</h3>
+          <p class="course-desc">بناء الجمل، المحادثة اليومية، والقراءة البسيطة بثقة أكبر.</p>
+          <div class="course-meta">
+            <span>⏱ 8 أسابيع</span>
+            <span>👥 حضوري/أونلاين</span>
+            <span>📚 16 حصة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card level-intermediate featured reveal">
+        <div class="featured-badge">الأكثر طلبًا</div>
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#3a2a1a,#241a0d)">🌟</div>
+        <div class="course-body">
+          <div class="course-level">المستوى الثالث</div>
+          <h3 class="course-name">Intermediate – المتوسط</h3>
+          <p class="course-desc">تعبير أوضح، قواعد أمتن، ومحادثات أطول وأكثر تفاعلًا.</p>
+          <div class="course-meta">
+            <span>⏱ 10 أسابيع</span>
+            <span>👥 حضوري/أونلاين</span>
+            <span>📚 20 حصة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card level-upper reveal">
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#1a2a3a,#0d1824)">🔥</div>
+        <div class="course-body">
+          <div class="course-level">المستوى الرابع</div>
+          <h3 class="course-name">Upper-Intermediate</h3>
+          <p class="course-desc">تعامَل مع نصوص أصعب، ناقش أفكارًا معقّدة، وطوّر مهارة الاستماع.</p>
+          <div class="course-meta">
+            <span>⏱ 10 أسابيع</span>
+            <span>👥 حضوري/أونلاين</span>
+            <span>📚 20 حصة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card level-advanced reveal">
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#2a1a1a,#240d0d)">💎</div>
+        <div class="course-body">
+          <div class="course-level">المستوى الخامس</div>
+          <h3 class="course-name">Advanced – المتقدّم</h3>
+          <p class="course-desc">أفكار معمّقة، كتابة احترافية، ومحادثات بمستوى أصحاب اللغة.</p>
+          <div class="course-meta">
+            <span>⏱ 12 أسبوع</span>
+            <span>👥 حضوري/أونلاين</span>
+            <span>📚 24 حصة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card level-business reveal">
+        <div class="course-icon-wrap" style="background:linear-gradient(135deg,#1a1a2a,#0d0d24)">💼</div>
+        <div class="course-body">
+          <div class="course-level">مستوى خاص</div>
+          <h3 class="course-name">Business English</h3>
+          <p class="course-desc">للمهنيين — اجتماعات، تقارير، مراسلات، وعروض تقديمية باللغة الإنجليزية.</p>
+          <div class="course-meta">
+            <span>⏱ 8 أسابيع</span>
+            <span>👥 أونلاين فقط</span>
+            <span>📚 16 حصة</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how">
+  <div class="container">
+    <div class="how-header reveal">
+      <span class="section-tag">كيف تبدأ</span>
+      <h2 class="section-heading">4 خطوات فقط</h2>
+      <p class="section-sub">من التسجيل حتى أول حصة — العملية بسيطة وسريعة.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="steps-wrap">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3 class="step-title">سجّل مجاناً</h3>
+        <p class="step-desc">أرسل طلبك عبر النموذج أو واتساب وانتظر تأكيدنا خلال ساعات.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3 class="step-title">تحديد المستوى</h3>
+        <p class="step-desc">اختبار قصير مجاني لتحديد المستوى المناسب لك تمامًا.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3 class="step-title">اختر الجدول</h3>
+        <p class="step-desc">حدّد أوقاتك المفضّلة — صباحًا أو مساءً، أونلاين أو حضوري.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h3 class="step-title">ابدأ رحلتك</h3>
+        <p class="step-desc">حصتك الأولى مجانية — تعرّف على المدرّس والمنهج بلا أي التزام.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header reveal">
+      <span class="section-tag">الأسعار</span>
+      <h2 class="section-heading">خطط واضحة، لا تفاجآت</h2>
+      <p class="section-sub">اختر الخطة التي تناسب احتياجاتك وميزانيتك — الحصة الأولى مجانية دائمًا.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card reveal">
+        <div class="price-plan">الخطة</div>
+        <div class="price-name">الأساسية</div>
+        <div class="price-amount"><sup>$</sup>29</div>
+        <div class="price-period">شهريًا · 8 حصص</div>
+        <ul class="price-features">
+          <li><span class="feat-check">✓</span> 8 حصص شهريًا (45 دقيقة)</li>
+          <li><span class="feat-check">✓</span> مدرّس معتمد</li>
+          <li><span class="feat-check">✓</span> مواد تعليمية رقمية</li>
+          <li><span class="feat-check">✓</span> واتساب دعم أسبوعي</li>
+          <li><span class="feat-cross">✗</span> حصص حضورية</li>
+          <li><span class="feat-cross">✗</span> شهادة معتمدة</li>
+        </ul>
+        <a href="#contact" class="btn-outline" style="width:100%;justify-content:center">ابدأ الآن</a>
+      </div>
+
+      <div class="price-card popular reveal">
+        <div class="popular-tag">الأفضل قيمة</div>
+        <div class="price-plan">الخطة</div>
+        <div class="price-name">المتكاملة</div>
+        <div class="price-amount"><sup>$</sup>55</div>
+        <div class="price-period">شهريًا · 16 حصة</div>
+        <ul class="price-features">
+          <li><span class="feat-check">✓</span> 16 حصة شهريًا (60 دقيقة)</li>
+          <li><span class="feat-check">✓</span> مدرّس ثابت مخصّص</li>
+          <li><span class="feat-check">✓</span> مواد تعليمية كاملة</li>
+          <li><span class="feat-check">✓</span> دعم يومي على واتساب</li>
+          <li><span class="feat-check">✓</span> 4 حصص حضورية شهريًا</li>
+          <li><span class="feat-check">✓</span> شهادة إتمام المستوى</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center">ابدأ الآن</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-plan">الخطة</div>
+        <div class="price-name">المكثّفة</div>
+        <div class="price-amount"><sup>$</sup>89</div>
+        <div class="price-period">شهريًا · 24 حصة</div>
+        <ul class="price-features">
+          <li><span class="feat-check">✓</span> 24 حصة شهريًا (60 دقيقة)</li>
+          <li><span class="feat-check">✓</span> مدرّسان ثابتان</li>
+          <li><span class="feat-check">✓</span> جميع المواد والكتب</li>
+          <li><span class="feat-check">✓</span> دعم على مدار الساعة</li>
+          <li><span class="feat-check">✓</span> 8 حصص حضورية شهريًا</li>
+          <li><span class="feat-check">✓</span> شهادة + توصية رسمية</li>
+        </ul>
+        <a href="#contact" class="btn-outline" style="width:100%;justify-content:center">ابدأ الآن</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-header reveal">
+      <span class="section-tag">شهادات الطلاب</span>
+      <h2 class="section-heading">أصواتهم أفضل دليل</h2>
+      <p class="section-sub">أكثر من 500 طالب غيّروا علاقتهم باللغة الإنجليزية معنا.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«كنت أخشى التحدث بالإنجليزية في العمل. بعد 3 أشهر مع Mr. Brown Academy أصبحت أقود اجتماعات كاملة بالإنجليزية!»</p>
+        <div class="testi-author">
+          <div class="author-avatar">س</div>
+          <div>
+            <div class="author-name">سارة م.</div>
+            <div class="author-role">مديرة تسويق – دبي</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«المدرّس كان صبورًا جدًّا ويفهم بالضبط أين أقع في الخطأ. الطريقة مختلفة تمامًا عن أي دورة حضرتها قبل ذلك.»</p>
+        <div class="testi-author">
+          <div class="author-avatar">أ</div>
+          <div>
+            <div class="author-name">أحمد خ.</div>
+            <div class="author-role">مهندس – الرياض</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«ابني (14 سنة) بدأ من الصفر وبعد فصل دراسي واحد أصبح يتابع سلاسل إنجليزية بدون ترجمة. النتائج مذهلة.»</p>
+        <div class="testi-author">
+          <div class="author-avatar">ن</div>
+          <div>
+            <div class="author-name">نورة ع.</div>
+            <div class="author-role">ربّة منزل – القاهرة</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«الجدول المرن أنقذني. أنا طالبة جامعية ومشغولة جدًّا، لكن المواعيد المسائية تناسبني تمامًا والدورة لم تؤثر على دراستي.»</p>
+        <div class="testi-author">
+          <div class="author-avatar">ل</div>
+          <div>
+            <div class="author-name">لمياء ر.</div>
+            <div class="author-role">طالبة جامعية – عمّان</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«اجتزت IELTS بدرجة 7 بعد دورة Business English مع الأكاديمية. كنت أتوقع 6 على أقصى تقدير!»</p>
+        <div class="testi-author">
+          <div class="author-avatar">ف</div>
+          <div>
+            <div class="author-name">فارس ب.</div>
+            <div class="author-role">محاسب – الكويت</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">«حضرت الحصة التجريبية ولم أتوقع أن أشعر بهذا الراحة من الدقيقة الأولى. سجّلت في الحال ولم أندم.»</p>
+        <div class="testi-author">
+          <div class="author-avatar">م</div>
+          <div>
+            <div class="author-name">منى ط.</div>
+            <div class="author-role">ممرّضة – القاهرة</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="section-tag">الأسئلة الشائعة</span>
+      <h2 class="section-heading">كل ما تريد معرفته</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل الحصة التجريبية مجانية تمامًا؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">نعم، الحصة الأولى مجانية بالكامل وبدون أي التزام. لن نطلب بيانات بطاقتك البنكية مسبقًا. فقط سجّل، وتواصل معك مدرّسك لترتيب الموعد.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">ما الفرق بين الأونلاين والحضوري؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">الدورات الأونلاين عبر Zoom أو Google Meet وتُقدّم نفس جودة المحتوى تمامًا. الحضوري متاح لمن هم في المنطقة الجغرافية القريبة من الأكاديمية. يمكنك الجمع بينهما في الخطة المتكاملة والمكثّفة.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">كيف أعرف مستواي قبل التسجيل؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">بعد تسجيلك، نُرسل لك اختبار تحديد مستوى قصير (15 دقيقة) عبر واتساب. بناءً على نتيجته يُحدَّد المستوى الأنسب لك. لا توجد إجابات صح أو خطأ — الهدف فقط معرفة نقطة انطلاقك.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل يمكنني تغيير موعد الحصة؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">نعم، يمكن إعادة الجدولة قبل 24 ساعة من موعد الحصة. نفهم أن ظروف الحياة قد تتغيّر ونحرص على أن يكون التجربة مرنة قدر الإمكان.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل تُصدر الأكاديمية شهادات معتمدة؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">نعم، كل طالب يُكمل مستواه يحصل على شهادة إتمام رسمية من Mr. Brown Academy. في الخطة المكثّفة نُضيف رسالة توصية رسمية يمكن تقديمها لأصحاب العمل أو المؤسسات التعليمية.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">هل الدورات مناسبة للأطفال؟ <div class="faq-icon">+</div></div>
+        <div class="faq-a">نعم، لدينا مناهج مُصمَّمة خصيصًا للأطفال من عمر 8 سنوات وما فوق. مدرّسو الأطفال متخصّصون ولديهم تجربة واسعة في جعل التعلّم ممتعًا وفعّالًا.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT / REGISTER ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-tag">تواصل معنا</span>
+        <h2 class="section-heading">ابدأ رحلتك اليوم</h2>
+        <p>سجّل الآن واحجز حصتك التجريبية المجانية. فريقنا سيتواصل معك خلال ساعات لترتيب كل شيء.</p>
+        <ul class="contact-items">
+          <li>
+            <div class="contact-icon">📱</div>
+            <div>
+              <strong style="color:var(--cream);display:block">واتساب</strong>
+              <span style="color:var(--text-muted)">+1 (000) 000-0000</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">📧</div>
+            <div>
+              <strong style="color:var(--cream);display:block">البريد الإلكتروني</strong>
+              <span style="color:var(--text-muted)">info@mrbrownacademy.com</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong style="color:var(--cream);display:block">ساعات الدعم</strong>
+              <span style="color:var(--text-muted)">السبت – الخميس، 9 ص – 10 م</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong style="color:var(--cream);display:block">الموقع</strong>
+              <span style="color:var(--text-muted)">أونلاين + [أضف عنوانك]</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <h3 class="form-title">احجز حصتك المجانية</h3>
+        <div id="contactForm">
+          <div class="form-group">
+            <label>الاسم الكامل *</label>
+            <input type="text" placeholder="أدخل اسمك الكامل" id="fname">
+          </div>
+          <div class="form-group">
+            <label>رقم الهاتف / واتساب *</label>
+            <input type="tel" placeholder="+966 500 000 000" id="fphone">
+          </div>
+          <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" placeholder="example@email.com" id="femail">
+          </div>
+          <div class="form-group">
+            <label>مستواك الحالي في الإنجليزية</label>
+            <select id="flevel">
+              <option value="">اختر مستواك...</option>
+              <option>مبتدئ (لا أعرف شيئًا تقريبًا)</option>
+              <option>أساسي (أفهم القليل)</option>
+              <option>متوسط (أستطيع التواصل ببطء)</option>
+              <option>فوق المتوسط</option>
+              <option>متقدّم</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>أي وقت يناسبك للدراسة؟</label>
+            <select id="ftime">
+              <option value="">اختر الوقت المفضّل...</option>
+              <option>الصباح (8 ص – 12 ظ)</option>
+              <option>الظهيرة (12 ظ – 4 م)</option>
+              <option>المساء (4 م – 8 م)</option>
+              <option>الليل (8 م – 11 م)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ملاحظات إضافية</label>
+            <textarea placeholder="هل لديك أي تفاصيل إضافية تريد إخبارنا بها؟" id="fnotes"></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:18px" onclick="submitForm()">
+            🎓 احجز حصتي المجانية الآن
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🎉</div>
+          <h3>تم إرسال طلبك بنجاح!</h3>
+          <p>سيتواصل معك فريقنا خلال ساعات لترتيب موعد حصتك التجريبية المجانية.</p>
+          <br>
+          <a href="https://wa.me/10000000000" class="btn-primary" style="margin-top:16px">💬 تواصل عبر واتساب مباشرة</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOKING SYSTEM ══ -->
+<section id="booking" style="padding:110px 0; background:var(--navy-mid); position:relative;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,110,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,.03) 1px,transparent 1px);background-size:80px 80px;"></div>
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <span class="section-tag">نظام الحجز</span>
+      <h2 class="section-heading">احجز حصتك خلال ثوانٍ</h2>
+      <p class="section-sub">اختر الدورة والوقت المناسب لك — وسنؤكّد لك الحجز فورًا على واتساب.</p>
+      <div class="divider"></div>
+    </div>
+    <div style="max-width:760px;margin:0 auto;">
+      <!-- STEP INDICATOR -->
+      <div id="bookingSteps" style="display:flex;justify-content:center;gap:0;margin-bottom:44px;" class="reveal">
+        <div class="bstep active" id="bs1" style="display:flex;align-items:center;gap:10px;">
+          <div class="bstep-num">1</div><span class="bstep-label">اختر الدورة</span>
+          <div class="bstep-line"></div>
+        </div>
+        <div class="bstep" id="bs2" style="display:flex;align-items:center;gap:10px;">
+          <div class="bstep-num">2</div><span class="bstep-label">اختر الوقت</span>
+          <div class="bstep-line"></div>
+        </div>
+        <div class="bstep" id="bs3" style="display:flex;align-items:center;gap:10px;">
+          <div class="bstep-num">3</div><span class="bstep-label">بياناتك</span>
+        </div>
+      </div>
+
+      <div class="form-card reveal" style="padding:44px;">
+
+        <!-- STEP 1: CHOOSE COURSE -->
+        <div id="bookStep1">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:28px;">أي دورة تهمّك؟</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" id="courseChoices">
+            <div class="course-choice" onclick="selectCourse(this,'مبتدئ – Beginner')">🌱 مبتدئ</div>
+            <div class="course-choice" onclick="selectCourse(this,'أساسي – Elementary')">🌿 أساسي</div>
+            <div class="course-choice" onclick="selectCourse(this,'متوسط – Intermediate')">🌟 متوسط</div>
+            <div class="course-choice" onclick="selectCourse(this,'فوق المتوسط – Upper')">🔥 فوق المتوسط</div>
+            <div class="course-choice" onclick="selectCourse(this,'متقدّم – Advanced')">💎 متقدّم</div>
+            <div class="course-choice" onclick="selectCourse(this,'Business English')">💼 Business English</div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;margin-top:28px;">
+            <button class="btn-primary" onclick="goStep(2)" id="step1Next" disabled style="opacity:.4">التالي →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: CHOOSE TIME -->
+        <div id="bookStep2" style="display:none;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:8px;">متى تريد البدء؟</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">اختر اليوم والوقت المفضّل لك</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;" id="dayChoices">
+            <div class="time-choice" onclick="selectDay(this,'السبت')">السبت</div>
+            <div class="time-choice" onclick="selectDay(this,'الأحد')">الأحد</div>
+            <div class="time-choice" onclick="selectDay(this,'الاثنين')">الاثنين</div>
+            <div class="time-choice" onclick="selectDay(this,'الثلاثاء')">الثلاثاء</div>
+            <div class="time-choice" onclick="selectDay(this,'الأربعاء')">الأربعاء</div>
+            <div class="time-choice" onclick="selectDay(this,'الخميس')">الخميس</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;" id="timeChoices">
+            <div class="time-choice" onclick="selectTime(this,'9:00 ص')">9:00 ص</div>
+            <div class="time-choice" onclick="selectTime(this,'11:00 ص')">11:00 ص</div>
+            <div class="time-choice" onclick="selectTime(this,'2:00 م')">2:00 م</div>
+            <div class="time-choice" onclick="selectTime(this,'4:00 م')">4:00 م</div>
+            <div class="time-choice" onclick="selectTime(this,'6:00 م')">6:00 م</div>
+            <div class="time-choice" onclick="selectTime(this,'8:00 م')">8:00 م</div>
+            <div class="time-choice" onclick="selectTime(this,'9:00 م')">9:00 م</div>
+            <div class="time-choice" onclick="selectTime(this,'10:00 م')">10:00 م</div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:28px;">
+            <button class="btn-outline" onclick="goStep(1)">← السابق</button>
+            <button class="btn-primary" onclick="goStep(3)" id="step2Next" disabled style="opacity:.4">التالي →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: DETAILS -->
+        <div id="bookStep3" style="display:none;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:8px;">بياناتك للتأكيد</h3>
+          <div id="bookSummary" style="background:var(--gold-dim);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:24px;font-size:14px;color:var(--gold);"></div>
+          <div class="form-group">
+            <label>الاسم الكامل *</label>
+            <input type="text" id="bname" placeholder="اسمك الكامل">
+          </div>
+          <div class="form-group">
+            <label>رقم الواتساب *</label>
+            <input type="tel" id="bphone" placeholder="+966 500 000 000">
+          </div>
+          <div class="form-group">
+            <label>نوع الحصة</label>
+            <select id="btype">
+              <option>أونلاين (Zoom)</option>
+              <option>حضوري</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button class="btn-outline" onclick="goStep(2)">← السابق</button>
+            <button class="btn-primary" onclick="confirmBooking()" style="flex:1;justify-content:center;">
+              ✅ تأكيد الحجز عبر واتساب
+            </button>
+          </div>
+        </div>
+
+        <!-- BOOKING SUCCESS -->
+        <div id="bookSuccess" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-size:56px;margin-bottom:16px;">🎉</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);margin-bottom:10px;">تم الحجز!</h3>
+          <p style="color:var(--text-muted);margin-bottom:24px;">سيُفتح لك واتساب تلقائيًا برسالة جاهزة. أرسلها للمدرّس لتأكيد موعدك.</p>
+          <button class="btn-primary" onclick="resetBooking()">📅 احجز موعدًا آخر</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section id="blog" style="padding:110px 0;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <span class="section-tag">المدوّنة التعليمية</span>
+      <h2 class="section-heading">تعلّم وأنت تقرأ</h2>
+      <p class="section-sub">مقالات أسبوعية مجانية تساعدك على تحسين إنجليزيتك خطوة بخطوة.</p>
+      <div class="divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;">
+
+      <div class="testi-card reveal" style="cursor:pointer;" onclick="openPost(0)">
+        <div style="background:linear-gradient(135deg,#1a3a2e,#0d2418);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:20px;">📖</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">نصائح لغوية</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.3;">10 أخطاء شائعة يقع فيها المتعلّمون العرب</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;">هل تقول "I am agree" أو "He is go"؟ تعرّف على أكثر الأخطاء تكرارًا وكيف تتجنّبها للأبد.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;">
+          <span>📅 مايو 2025</span><span style="color:var(--gold);">اقرأ المزيد ←</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="cursor:pointer;" onclick="openPost(1)">
+        <div style="background:linear-gradient(135deg,#2a1a3a,#180d24);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:20px;">🎧</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">مهارة الاستماع</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.3;">كيف تفهم الإنجليزية بسرعة طبيعية؟</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;">السرّ ليس في الترجمة — بل في تدريب أذنك على التعرّف على الأنماط. إليك الطريقة الصحيحة.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;">
+          <span>📅 أبريل 2025</span><span style="color:var(--gold);">اقرأ المزيد ←</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="cursor:pointer;" onclick="openPost(2)">
+        <div style="background:linear-gradient(135deg,#3a2a1a,#241a0d);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:20px;">💬</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">مهارة الكلام</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.3;">30 جملة تنقلك من صامت إلى متحدّث</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;">احفظ هذه الجمل الذهبية واستخدمها في أي محادثة — ستبدو كأنك تتحدث الإنجليزية منذ سنوات.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;">
+          <span>📅 مارس 2025</span><span style="color:var(--gold);">اقرأ المزيد ←</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="cursor:pointer;" onclick="openPost(3)">
+        <div style="background:linear-gradient(135deg,#1a2a3a,#0d1824);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:20px;">✍️</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">مهارة الكتابة</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.3;">كيف تكتب إيميل احترافي بالإنجليزية؟</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;">قوالب جاهزة وعبارات احترافية لإيميلات العمل — استخدمها مباشرة دون حاجة لخبرة متقدّمة.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;">
+          <span>📅 فبراير 2025</span><span style="color:var(--gold);">اقرأ المزيد ←</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="cursor:pointer;" onclick="openPost(4)">
+        <div style="background:linear-gradient(135deg,#2a1a1a,#240d0d);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:20px;">📚</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">توسيع المفردات</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:10px;line-height:1.3;">الطريقة العلمية لحفظ 500 كلمة في شهر</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;">تقنية التكرار المتباعد + الفلاشكاردز = نتائج لا تُصدَّق. كل ما تحتاجه موضّح هنا.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:14px;">
+          <span>📅 يناير 2025</span><span style="color:var(--gold);">اقرأ المزيد ←</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="background:var(--gold-dim);border:1px dashed var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px;">
+        <div style="font-size:40px;margin-bottom:16px;">✉️</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);margin-bottom:10px;">اشترك في النشرة الأسبوعية</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;line-height:1.7;">أرسل لنا واتساب بكلمة "اشتراك" وستصلك نصيحة لغوية كل أسبوع مجانًا.</p>
+        <a href="https://wa.me/10000000000?text=اشتراك" class="btn-primary" target="_blank">📲 اشترك مجانًا</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG POST MODAL ══ -->
+<div id="postModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);overflow-y:auto;padding:40px 20px;" onclick="closePost(event)">
+  <div style="max-width:720px;margin:0 auto;background:var(--navy-light);border:1px solid var(--border);border-radius:16px;overflow:hidden;" onclick="event.stopPropagation()">
+    <div style="height:4px;background:linear-gradient(90deg,var(--gold),transparent);"></div>
+    <div style="padding:40px 44px 50px;" id="postContent"></div>
+    <div style="padding:0 44px 36px;"><button class="btn-outline" onclick="document.getElementById('postModal').style.display='none'">✕ إغلاق</button></div>
+  </div>
+</div>
+
+<!-- ══ CTA BANNER ══ -->
+<section id="cta-banner">
+  <div class="container">
+    <h2 class="cta-big reveal">لا تنتظر أكثر<br><span>ابدأ اليوم مجاناً</span></h2>
+    <p class="cta-sub reveal">الحصة الأولى على حسابنا — تعرّف على المدرّس، جرّب المنهج، وقرّر بعدها.</p>
+    <div class="cta-actions reveal">
+      <a href="#contact" class="btn-primary" style="font-size:17px;padding:18px 44px">🎓 سجّل مجاناً الآن</a>
+      <a href="https://wa.me/10000000000" class="btn-outline" style="font-size:17px;padding:17px 44px">💬 واتساب مباشر</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">B</div>
+          <div class="logo-text">Mr. Brown Academy<span>English Language School</span></div>
+        </div>
+        <p class="footer-desc">نُعلّمك الإنجليزية بالطريقة التي تناسبك — مرنة، عملية، ومثمرة. لأن اللغة بوابتك إلى العالم.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="Instagram">📸</a>
+          <a href="#" class="social-btn" title="Facebook">👤</a>
+          <a href="#" class="social-btn" title="YouTube">▶</a>
+          <a href="#" class="social-btn" title="TikTok">🎵</a>
+          <a href="#" class="social-btn" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>الدورات</h4>
+        <ul>
+          <li><a href="#courses">مبتدئ</a></li>
+          <li><a href="#courses">أساسي</a></li>
+          <li><a href="#courses">متوسط</a></li>
+          <li><a href="#courses">فوق المتوسط</a></li>
+          <li><a href="#courses">متقدّم</a></li>
+          <li><a href="#courses">Business English</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>روابط</h4>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#how">كيف تبدأ</a></li>
+          <li><a href="#pricing">الأسعار</a></li>
+          <li><a href="#testimonials">شهادات الطلاب</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل</h4>
+        <ul>
+          <li><a href="#">📱 واتساب</a></li>
+          <li><a href="#">📧 info@mrbrownacademy.com</a></li>
+          <li><a href="#">📍 [عنوانك]</a></li>
+          <li><a href="#">🕐 9 ص – 10 م (السبت–الخميس)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Mr. Brown Academy. جميع الحقوق محفوظة.</span>
+      <span>صُنع بـ ❤️ لطلاب اللغة العربية</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ FLOATING BUTTONS ══ -->
+<a href="https://wa.me/10000000000" class="whatsapp-float" title="واتساب" target="_blank">💬</a>
+<div id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="الأعلى">↑</div>
+
+<!-- ════════════════════════════════════
+   JAVASCRIPT
+════════════════════════════════════ -->
+<script>
+/* ── NAVBAR SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ── MOBILE MENU ── */
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el, target, duration = 1800) {
+  let start = 0, step = target / (duration / 16);
+  let timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = Math.floor(start) + (el.dataset.target === '98' ? '' : '+');
+    if(start >= target) { el.textContent = target + (el.dataset.target === '98' ? '%' : '+'); clearInterval(timer); }
+  }, 16);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const el = e.target;
+      animateCounter(el, parseInt(el.dataset.target));
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ── FORM SUBMIT ── */
+function submitForm() {
+  const name  = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  if(!name || !phone) {
+    alert('يرجى إدخال الاسم ورقم الهاتف على الأقل.');
+    return;
+  }
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
